@@ -1,41 +1,189 @@
-# Playwright Accessibility Test
+# Playwright Accessibility Testing
 
-Sample project to demonstrate a playwrite custom command.
+This project demonstrates how to perform **web accessibility testing** using **Playwright**, **TypeScript**, and **Axe-Core**. It follows Playwright best practices and scans web pages for accessibility violations based on WCAG guidelines.
 
-## Pre-Requirements
-It is required to have Node.js and npm installed to run this project.
+---
 
-I used versions v18.16.0 and 9.5.1 of Node.js and npm, respectively. I suggest you use the same or later versions.
+## Tech Stack
+
+* Playwright
+* TypeScript
+* Axe-Core Playwright
+* Node.js
+
+---
+
+## Prerequisites
+
+Before running this project, ensure you have the following installed:
+
+* Node.js (v18.16.0 or later)
+* npm (v9.5.1 or later)
+
+You can verify your installed versions by running:
+
+```bash
+node -v
+npm -v
+```
+
+---
 
 ## Installation
-Installing playwright - npm init playwright@latest
-Run npm install (or npm i for the short version) to install the dev dependencies.
 
-## Running Tests
-Running all tests;
-Npx playwright test;
-Running a single test file;
-Npx playwright test landing-page.spec.ts;
+### 1. Create a new Playwright project
 
-## Accessibility Test 
-1) Imports the @axe-core/playwright package
-2) Uses normal Playwright Test syntax to define a test case
-3) Uses normal Playwright syntax to navigate to the page under test
-4) Awaits AxeBuilder.analyze() to run the accessibility scan against the page
-5) Uses normal Playwright Test assertions to verify that there are no violations in the returned scan results
-___
+```bash
+npm init playwright@latest
+```
 
-## GIT Commands
+### 2. Install project dependencies
 
+```bash
+npm install
+```
+
+or
+
+```bash
+npm i
+```
+
+---
+
+## Running the Tests
+
+### Run all tests
+
+```bash
+npx playwright test
+```
+
+### Run a specific test file
+
+```bash
+npx playwright test landing-page.spec.ts
+```
+
+### Run tests in headed mode
+
+```bash
+npx playwright test --headed
+```
+
+### View the HTML report
+
+```bash
+npx playwright show-report
+```
+
+---
+
+## Accessibility Testing Workflow
+
+This project performs accessibility testing using **@axe-core/playwright**.
+
+Each test follows these steps:
+
+1. Import the **@axe-core/playwright** package.
+2. Use the standard Playwright Test syntax to define the test.
+3. Navigate to the target web page.
+4. Execute the accessibility scan using:
+
+```typescript
+await new AxeBuilder({ page }).analyze();
+```
+
+5. Validate that no accessibility violations are detected using Playwright assertions.
+
+This approach helps identify issues related to:
+
+* Missing alternative text
+* Incorrect heading hierarchy
+* Color contrast problems
+* Missing form labels
+* ARIA attribute violations
+* Keyboard accessibility issues
+* Other WCAG compliance violations
+
+---
+
+## Project Structure
+
+```text
+Playwright-Accessibility/
+│
+├── tests/
+│   └── landing-page.spec.ts
+│
+├── playwright.config.ts
+├── package.json
+├── tsconfig.json
+└── README.md
+```
+
+---
+
+## Git Commands
+
+Initialize a Git repository:
+
+```bash
 git init
+```
+
+Check repository status:
+
+```bash
 git status
+```
+
+Stage all files:
+
+```bash
 git add .
-git commit -m "Initial commit - Playwright TypeScript POM DemoQA Framework"
-create repository
-git remote add origin (https://github.com/starex683/Accessibility-Testing-Playwright)
+```
+
+Commit the changes:
+
+```bash
+git commit -m "Initial commit - Playwright Accessibility Testing"
+```
+
+Add the remote repository:
+
+```bash
+git remote add origin https://github.com/starex683/Accessibility-Testing-Playwright.git
+```
+
+Rename the default branch:
+
+```bash
 git branch -M main
+```
+
+Push the project to GitHub:
+
+```bash
 git push -u origin main
+```
 
----####----
-This project was created by Akhila
+---
 
+## Dependencies
+
+Install Axe-Core for Playwright:
+
+```bash
+npm install --save-dev @axe-core/playwright
+```
+
+---
+
+## Author
+
+**Akhila Gandikota**
+
+QA Automation Engineer
+
+Specialized in Playwright, TypeScript, API Testing, Accessibility Testing, and CI/CD Automation.
